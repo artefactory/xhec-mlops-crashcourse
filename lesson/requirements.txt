@@ -1,0 +1,5 @@
+seaborn
+scikit-learn
+pandas
+mlflow
+jupyterlab
