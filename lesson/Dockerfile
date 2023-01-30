@@ -14,4 +14,4 @@ EXPOSE 8888
 EXPOSE 5000
 
 # Run Jupyter Lab when container starts up 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token='DOCKER_RULES'"]
