@@ -33,45 +33,33 @@ If you check the Docker App, you should see a getting started container running.
 
 ## Step 2: Prepare the course infrastructure
 Now, we will guide you to build the required Docker Images
-### Mac
-* Run :
-```bash
-make prepare-mlops-crashcourse
-```
-### Linux
+### Mac & Linux
 * Run :
 ```bash
 make prepare-mlops-crashcourse
 ```
 ### Windows
-
+TODO
 ## Step 3: Launch the course
 Follow these steps to mount the two containers and open the User interface to start the course.
-### Mac
-* Run :
-```bash
-make launch-mlops-crashcourse
-```
-### Linux
+### Mac & Linux
 * Run :
 ```bash
 make launch-mlops-crashcourse
 ```
 ### Windows
+TODO
 
+Once the Jupyter server is launched, you will need to use a token to attach your browser to it. The token you should use is `MLOPS`
 ## Step 4: Cleanup
 Once you are done with the course, you can follow these steps to clean your workspace. Careful! This will destroy all your work if you did not save it locally.
-### Mac
-* Run :
-```bash
-make clean-mlops-crashcourse
-```
-### Linux
+### Mac & Linux
 * Run :
 ```bash
 make clean-mlops-crashcourse
 ```
 ### Windows
+TODO
 
 # TODO
 * Create an alternative to the makefile for Windows systems without GNU cmake installed.
