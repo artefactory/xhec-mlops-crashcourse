@@ -34,7 +34,7 @@ remove-all:
 run-all: run-lesson run-mlflow
 
 run-lesson:
-	./lesson/run_lab.sh
+	./lesson/bin/run_lab.sh
 
 run-mlflow:
 	./mlflow_server/run_server.sh
