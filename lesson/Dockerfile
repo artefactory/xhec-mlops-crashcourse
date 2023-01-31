@@ -10,6 +10,7 @@ RUN bash bin/install_requirements.sh
 COPY ./data ./data
 RUN mkdir outputs
 COPY ./notebooks ./notebooks
+COPY ./great_expectations ./great_expectations
 
 # Expose port 8888 for jupyter lab 
 EXPOSE 8888
