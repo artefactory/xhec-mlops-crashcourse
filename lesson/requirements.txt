@@ -1,4 +1,3 @@
-pre-commit
 seaborn
 scikit-learn
 pandas
@@ -8,3 +7,9 @@ jupyterlab
 fastapi
 pyngrok
 uvicorn
+# linting
+pre-commit
+black
+black[jupyter]
+flake8
+isort
