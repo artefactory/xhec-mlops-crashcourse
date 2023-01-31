@@ -1,0 +1,23 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "taxi-trips-expectations",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "base_passenger_fare",
+        "min_value": 0
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Target variable should not be negative as drivers should be paid a positive amount."
+       }
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.15.46"
+  }
+}

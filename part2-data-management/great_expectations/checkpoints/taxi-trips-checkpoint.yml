@@ -1,0 +1,10 @@
+name: taxi-trips-checkpoint # Name of our checkpoint
+config_version: 1.0
+class_name: SimpleCheckpoint # We'll use a simple checkpoint class
+run_name_template: "%Y%m%d-%H%M%S-my-run-name-template" # Checkpoints will be timestamped and use this naming template
+validations:
+  - batch_request: # How to access our datasource
+      datasource_name: taxi_trips
+      data_connector_name: parquet_data_connector
+      data_asset_name: taxi_trips_2022
+    expectation_suite_name: taxi-trips-expectations # The expectations to run

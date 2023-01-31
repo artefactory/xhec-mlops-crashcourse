@@ -1,0 +1,63 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "taxi-trips-expectations",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "base_passenger_fare",
+        "min_value": 0
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Target variable should not be negative as drivers should be paid a positive amount."
+       }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "hvfhs_license_num",
+        "value_set": ["HV0002", "HV0003", "HV0004", "HV0005"]
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Operating company should be in the authorized list."
+       }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "trip_miles",
+        "min_value": 0,
+        "max_value": 500
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Mileage counter should not be negative or too large."
+       }
+      }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {
+        "column_set": ["base_passenger_fare", "trip_miles", "hvfhs_license_num", "PULocationID", "DOLocationID"],
+        "exact_match": false
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Table columns list should at least contain these columns."
+       }
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.15.46"
+  }
+}
