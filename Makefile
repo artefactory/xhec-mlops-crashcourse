@@ -68,8 +68,7 @@ ready:
 .PHONY: goodbye
 goodbye:
 	@echo
-	@echo "Welcome to the Streamlit Terraform app deployment helper!"
-	@echo "This util will help you deploy your Streamlit app as a Cloud Run Service"
+	@echo "Thanks for participating in the Artefact MLOps crash course!"
 	@echo
 
 .PHONY: open-ui
