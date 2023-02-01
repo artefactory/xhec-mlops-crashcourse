@@ -20,7 +20,7 @@ jobs:
 
       - name: Install requirements
         run: |
-          bash lesson/install_requirements.sh
+          bash lesson/bin/install_requirements.sh
       - name: Run linter
         run: |
           make run_linter
