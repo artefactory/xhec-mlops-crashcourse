@@ -1,8 +1,6 @@
-FROM python:3-slim
-ARG MLFLOW_VERSION=1.26.1
+FROM ghcr.io/mlflow/mlflow:v2.1.1
 
 WORKDIR /mlflow/
-RUN pip install --no-cache-dir psycopg2-binary mlflow==$MLFLOW_VERSION
 EXPOSE 5000
 
 ENV BACKEND_URI sqlite:////mlflow/mlflow.db
