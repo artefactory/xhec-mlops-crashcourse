@@ -24,7 +24,7 @@ Once docker is installed, make sure that it is running correctly by running:
 docker run -d -p 80:80 docker/getting-started
 ```
 
-If you check the Docker App, you should see a getting started container running. Once you've checked that this works correctly, remove the container via the UI.  
+If you check the Docker App, you should see a getting started container running. Once you've checked that this works correctly, remove the container via the UI.
 
 <details>
     <summary><b>Optional</b></summary>
