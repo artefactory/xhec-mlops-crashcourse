@@ -1,0 +1,26 @@
+name: MLOps X-HEC CI
+
+on: [push, pull_request]
+
+jobs:
+  CI:
+    name: Launching CI
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install requirements
+        run: |
+          cd lesson && bash bin/install_requirements.sh && cd ..
+      - name: Run linter
+        run: |
+          make run-linter

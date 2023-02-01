@@ -45,6 +45,28 @@ stop-all:
 	-@docker stop mlflow
 
 #################
+# 	 	CI	    #
+#################
+
+# help: run-linter				- lint code
+.PHONY: run-linter
+run-linter:
+	@echo "Running linter and code formatting checks"
+	@isort . --check --diff --profile black
+	@black --check .
+	@flake8 .
+
+# help: install_precommit				- run pre-commit hooks
+.PHONY: install-precommit
+install-precommit:
+	@pre-commit install -t pre-commit
+
+# help: format-code				- run pre-commit hooks
+.PHONY: format-code
+format-code:
+	@pre-commit run --all-files
+
+#################
 # 	   MISC	    #
 #################
 
