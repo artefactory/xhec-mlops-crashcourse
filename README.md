@@ -46,6 +46,7 @@ Now, we will guide you to build the required Docker Images. With a terminal, go 
 <details>
     <summary><b>If you have `make` and `bash` installed on your terminal</b></summary>
     Then simply run:
+
     ```bash
     make prepare-mlops-crashcourse
     ```
@@ -78,6 +79,8 @@ Follow these steps to mount the two containers and open the User interface to st
 
 <details>
     <summary><b>Without `make` and `bash` installed on your terminal</b></summary>
+    First create a network:
+
     ```bash
     docker network create --driver bridge mlops-crashcourse
     ```
@@ -109,6 +112,7 @@ Once you are done with the course, you can follow these steps to clean your work
 
 <details>
     <summary><b>If you have `make` and `bash` installed on your terminal</b></summary>
+    
     Then simply run:
     ```bash
     make clean-mlops-crashcourse
