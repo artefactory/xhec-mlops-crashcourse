@@ -1,18 +1,17 @@
 import os
-import numpy as np
 import pickle
+import numpy as np
 import pandas as pd
 
 from typing import List
-from scipy.sparse import csr_matrix
 from dataclasses import dataclass
-
-from sklearn.feature_extraction import DictVectorizer
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-
+from scipy.sparse import csr_matrix
 
 from prefect import task, flow
+
+from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn.feature_extraction import DictVectorizer
 
 
 @dataclass
