@@ -1,10 +1,7 @@
 import os
 import numpy as np
 import pickle
-import random
-import asyncio
 import pandas as pd
-import urllib.request
 
 from typing import List
 from scipy.sparse import csr_matrix
@@ -19,12 +16,12 @@ from prefect import task, flow
 
 
 @dataclass
-class config:
-    TRAIN_DATA="../data/yellow_tripdata_2021-01.parquet"
-    TEST_DATA="../data/yellow_tripdata_2021-02.parquet"
-    INFERENCE_DATA="../data/yellow_tripdata_2021-03.parquet"
-    LOCAL_STORAGE='./results'
-    CATEGORICAL_VARS=['PULocationID', 'DOLocationID', 'passenger_count']
+class Config:
+    TRAIN_DATA = "../data/yellow_tripdata_2021-01.parquet"
+    TEST_DATA = "../data/yellow_tripdata_2021-02.parquet"
+    INFERENCE_DATA = "../data/yellow_tripdata_2021-03.parquet"
+    LOCAL_STORAGE = './results'
+    CATEGORICAL_VARS = ['PULocationID', 'DOLocationID', 'passenger_count']
 
 
 @task(name='load_data', tags=['preprocessing'], retries=2, retry_delay_seconds=60)
@@ -71,7 +68,7 @@ def encode_categorical_cols(
     the specified columns converted to categorical data type
     """
     if categorical_cols is None:
-        categorical_cols = config.CATEGORICAL_VARS
+        categorical_cols = Config.CATEGORICAL_VARS
     df[categorical_cols] = df[categorical_cols].fillna(-1).astype('int')
     df[categorical_cols] = df[categorical_cols].astype('str')
     return df
@@ -92,7 +89,7 @@ def extract_x_y(
     dictvectorizer object.
     """
     if categorical_cols is None:
-        categorical_cols = config.CATEGORICAL_VARS
+        categorical_cols = Config.CATEGORICAL_VARS
     dicts = df[categorical_cols].to_dict(orient='records')
 
     y = None
@@ -192,7 +189,7 @@ def complete_ml(
         test_path: str,
         save_model: bool = True,
         save_dv: bool = True,
-        local_storage: str = config.LOCAL_STORAGE
+        local_storage: str = Config.LOCAL_STORAGE
 ) -> None:
     """
     Load data and prepare sparse matrix (using dictvectorizer) for model training
@@ -213,7 +210,7 @@ def complete_ml(
 
 
 @flow(name="Batch inference", retries=1, retry_delay_seconds=30)
-def batch_inference(input_path, dv=None, model=None, local_storage=config.LOCAL_STORAGE):
+def batch_inference(input_path, dv=None, model=None, local_storage=Config.LOCAL_STORAGE):
     """
     Load model and dictvectorizer from folder
     Transforms input data with dictvectorizer
@@ -226,5 +223,3 @@ def batch_inference(input_path, dv=None, model=None, local_storage=config.LOCAL_
     if not model:
         model = load_pickle(f"{local_storage}/model.pickle")["model"]
     return predict_duration(data["x"], model)
-
-
