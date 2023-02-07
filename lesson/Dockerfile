@@ -7,6 +7,7 @@ WORKDIR /app
 COPY ./bin ./bin
 COPY ./lib ./lib
 COPY ./requirements.txt ./requirements.txt
+COPY ./solutions.zip ./solutions.zip
 RUN bash bin/install_requirements.sh
 COPY ./data ./data
 RUN mkdir outputs
