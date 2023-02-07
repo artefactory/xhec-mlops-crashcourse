@@ -17,7 +17,7 @@ datasources:
         base_directory: ../data # Where you data lives
         assets: # For a given datasource, you can define assets (here: different tables)
           taxi_trips_2022: # Our asset for january
-            pattern: taxi-trips-2022-(.*)\.parquet # A pattern matching to catch this asset in the base directory
+            pattern: taxi-trips-2022-(02)\.parquet # A pattern matching to catch this asset in the base directory
             group_names: ['month']
         batch_spec_passthrough: # How to read it with our execution engine (pandas.read)
           reader_method: "read_parquet"

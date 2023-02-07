@@ -7,7 +7,4 @@ validations:
       datasource_name: taxi_trips
       data_connector_name: parquet_data_connector
       data_asset_name: taxi_trips_2022
-      data_connector_query:
-        batch_filter_parameters:
-          month: "02"
     expectation_suite_name: taxi-trips-expectations-solution # The expectations to run

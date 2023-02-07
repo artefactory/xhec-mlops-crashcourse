@@ -2,8 +2,10 @@ prefect
 seaborn
 scikit-learn
 pandas
+gdown
 mlflow
 jupyterlab
+great_expectations
 # deployment
 fastapi
 pyngrok
