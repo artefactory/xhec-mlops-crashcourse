@@ -19,7 +19,7 @@ class Config:
     CATEGORICAL_VARS = ["PULocationID", "DOLocationID", "passenger_count"]
 
 
-############# TASKS ##############
+# TASKS ###############################
 
 
 @task(name="load_data", tags=["preprocessing"], retries=2, retry_delay_seconds=60)
@@ -135,7 +135,7 @@ def save_pickle(path: str, obj: dict):
         pickle.dump(obj, f)
 
 
-############# FLOWS ##############
+# FLOWS ###############################
 
 
 @flow(name="Data processing", retries=1, retry_delay_seconds=30)
