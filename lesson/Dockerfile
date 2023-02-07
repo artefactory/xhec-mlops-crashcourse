@@ -10,6 +10,8 @@ RUN bash bin/install_requirements.sh
 COPY ./data ./data
 RUN mkdir outputs
 COPY ./notebooks ./notebooks
+COPY ./lib ./lib
+ENV PYTHONPATH "$PYTHONPATH:/app/lib"
 COPY ./great_expectations ./great_expectations
 
 # Expose port 8888 for jupyter lab
