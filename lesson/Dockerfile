@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Copying and installing course requirements
 COPY ./bin ./bin
+COPY ./lib ./lib
 COPY ./requirements.txt ./requirements.txt
 RUN bash bin/install_requirements.sh
 COPY ./data ./data
