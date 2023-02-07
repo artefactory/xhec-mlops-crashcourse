@@ -2,7 +2,7 @@ prepare-mlops-crashcourse: welcome build-all ready
 
 launch-mlops-crashcourse: create-network run-all open-ui
 
-clean-mlops-crashcourse: stop-all remove-all remove-network goodbye
+clean-mlops-crashcourse: stop-all remove-all remove-network clean-mlflow goodbye
 
 #################
 # 	 DOCKER	    #
@@ -43,6 +43,11 @@ stop-all:
 	@echo "Stopping all course containers..."
 	-@docker stop jupyter
 	-@docker stop mlflow
+
+clean-mlflow:
+	@echo "Removing all mlflow data..."
+	-@rm -rf ./mlflow_server/local/artifacts
+	-@rm -rf ./mlflow_server/local/mlflow.db
 
 #################
 # 	 	CI	    #
