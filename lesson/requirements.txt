@@ -3,6 +3,8 @@ seaborn
 scikit-learn
 pandas
 mlflow
+gdown
+great_expectations
 jupyterlab
 # deployment
 fastapi
