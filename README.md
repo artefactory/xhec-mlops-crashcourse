@@ -1,15 +1,15 @@
-# X-HEC MLOPS CRASH COURSE
+# DSB MLOPS CRASH COURSE
 
-The purpose of this course is to introduce the main concepts of Machine Learning Operations or MLOps for short, and illustrate their interest and usage through a simple use case.
+The purpose of this course is to introduce the main concepts of Machine Learning Operations, or MLOps for short, and illustrate their interest and usage through a simple use case.
 
 # Prerequisites
-For best experience, we recommand that you have Docker installed on your machine.
+For the best experience, we recommend that you have Docker installed on your machine.
 
 # How to set up
 This repository aims to simplify as much as possible the setup of the infrastructure required for this course. It will create two docker containers, one to host the Jupyter lab that you are going to use for experiments, and the other to host the mlflow server you will log your experiments into.
 
 ## Step 1: Installing prerequisites
-Let's first make sure you have access to the required tool, namely Docker.
+Let's first make sure you have access to the Docker.
 
 ### Docker
 Check that you have Docker desktop installed in your machine. If that is not the case, just follow the official instructions:
@@ -41,78 +41,67 @@ If you check the Docker App, you should see a getting started container running.
 ## Step 2: Prepare the course infrastructure
 
 
-Now, we will guide you to build the required Docker Images. With a terminal, go to the root of this folder. 
+Now, we will guide you to build the required Docker Images. With a terminal, go to the root of this folder.
+
+First check that you have `make` installed by running `make -v`
 
 <details>
     <summary><b>If you have `make` and `bash` installed on your terminal</b></summary>
     Then simply run:
-
-    ```bash
-    make prepare-mlops-crashcourse
-    ```
+    <p><pre>make prepare-mlops-crashcourse</pre></p>
 </details>
 
 <details>
     <summary><b>Without `make` and `bash` installed on your terminal</b></summary>
-    Please run 
-
-    ```bash
-    docker build -t mlops_notebooks ./lesson/
-    docker build -t mlops_mlflow ./mlflow_server/
-    ```
+    Please run:
+    <p><pre>docker build -t mlops_notebooks ./lesson/
+docker build -t mlops_mlflow ./mlflow_server/</pre></p>
 </details>
 
 
 ## Step 3: Launch the course
 
-Follow these steps to mount the two containers and open the User interface to start the course.
+Follow these steps to mount the two containers and open the user interface to start the course.
 
 
 <details>
     <summary><b>If you have `make` and `bash` installed on your terminal</b></summary>
-    You can directly bundle all this section commands typing:
-
-    ```bash
-    make launch-mlops-crashcourse
-    ```
+    You can directly bundle all this section's commands by typing:
+    <p><pre>make launch-mlops-crashcourse</pre></p>
 </details>
 
 <details>
     <summary><b>Without `make` and `bash` installed on your terminal</b></summary>
-    First create a network:
-
-    ```bash
-    docker network create --driver bridge mlops-crashcourse
-    ```
-
-    Then:
-
-    ```bash
-    docker run -it --rm --user root -p 10000:8888 -p 8000:8000 -p 4200:4200 -v ${PWD}/mlflow_server/local:/mlflow -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=docker -e MLFLOW_TRACKING_URI=http://mlflow:5001 --network mlops-crashcourse --name jupyter -d mlops_notebooks
-    ```
-
-    And:
-
-    ```bash
-    docker run -it -d --rm -p 5001:5000 -v ${PWD}/mlflow_server/local:/mlflow --network mlops-crashcourse --name mlflow mlops_mlflow
-    ```
-
-    You can then open your favorite browser and open in two tabs the two urls we will be working with:
-    * http://localhost:10000
-    * http://localhost:5001
+    First, create a network:
+    <p><pre>docker network create --driver bridge mlops-crashcourse</pre></p>
+    <p>Then:</p>
+    <p><pre>docker run -it --rm --user root -p 10000:8888 -p 8000:8000 -p 4200:4200 -v ${PWD}/mlflow_server/local:/mlflow -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=docker -e MLFLOW_TRACKING_URI=http://mlflow:5001 --network mlops-crashcourse --name jupyter -d mlops_notebooks</pre></p>
+    <p>And:</p>
+    <p><pre>docker run -it -d --rm -p 5001:5000 -v ${PWD}/mlflow_server/local:/mlflow --network mlops-crashcourse --name mlflow mlops_mlflow</pre></p>
+    <p>You can then open your favorite browser and open in two tabs the two urls we will be working with:</p>
+    <ul>
+    <li>http://localhost:10000</li>
+    <li>http://localhost:5001</li>
+    <ul>
 </details>
 
 Once the Jupyter server is launched, you will need to use a token to attach your browser to it. The token you should use is `MLOPS`.
 
+## Step 4: Time to work
 
+All the activities of this course can be found in the `notebooks` folder. If you are using docker, then you will be working on jupyter lab and the folder will be immediately visible from the root. If instead, you are running this course locally on your computer, then you can find the notebooks under `lesson/notebooks`.
 
-## Step 4: Cleanup
+> If you encounter difficulties during, don't hesitate to call us for help
 
-Once you are done with the course, you can follow these steps to clean your workspace. Careful! This will destroy all your work if you did not save it locally.
+## Step 5: Cleanup
+
+Once you are done with the course, you can follow these steps to clean your workspace.
+
+> Careful! This will destroy all your work if you did not save it locally.
 
 <details>
     <summary><b>If you have `make` and `bash` installed on your terminal</b></summary>
-    
+
     Then simply run:
     ```bash
     make clean-mlops-crashcourse
@@ -121,7 +110,7 @@ Once you are done with the course, you can follow these steps to clean your work
 
 <details>
     <summary><b>Without `make` and `bash` installed on your terminal</b></summary>
-    Please run 
+    Please run
 
     ```bash
 	docker stop jupyter
@@ -131,8 +120,3 @@ Once you are done with the course, you can follow these steps to clean your work
     docker network rm mlops-crashcourse
     ```
 </details>
-
-
-
-# TODO
-* Crash test
