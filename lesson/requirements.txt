@@ -5,7 +5,7 @@ pandas
 mlflow
 gdown
 great_expectations
-jupyterlab
+notebook
 # deployment
 fastapi
 pyngrok
