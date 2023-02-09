@@ -2,23 +2,29 @@
 
 The purpose of this course is to introduce the main concepts of Machine Learning Operations, or MLOps for short, and illustrate their interest and usage through a simple use case.
 
-# Prerequisites
-For the best experience, we recommend that you have Docker installed on your machine.
-
-# How to set up
 This repository aims to simplify as much as possible the setup of the infrastructure required for this course. It will create two docker containers, one to host the Jupyter lab that you are going to use for experiments, and the other to host the mlflow server you will log your experiments into.
 
+# Prerequisites
+For the best experience, we recommend that you have Docker, bash and Make installed on your machine. Follow the instructions to install them if you don't have them already.
+
+# How to set up
 ## Step 1: Installing prerequisites
-Let's first make sure you have access to the Docker.
+Let's first make sure you have access to the Docker. If you are not sure, follow the instructions below.
 
 ### Docker
-Check that you have Docker desktop installed in your machine. If that is not the case, just follow the official instructions:
+Check that you have Docker desktop installed in your machine by running:
+
+```bash
+docker -v
+```
+
+If that is not the case, just follow the official instructions:
 
 * [Install Docker - Mac OS](https://docs.docker.com/desktop/install/mac-install/)
 * [Install Docker - Linux](https://docs.docker.com/desktop/install/linux-install/)
 * [Install Docker - Windows](https://docs.docker.com/desktop/install/windows-install/)
 
-For those of you working on Windows, you will need to update Windows Subsystem for Linux. To do so, simply open PowerShell and run:
+For those of you working on Windows, you might need to update Windows Subsystem for Linux. To do so, simply open PowerShell and run:
 
 ```bash
 wsl --update
@@ -27,7 +33,7 @@ wsl --update
 Once docker is installed, make sure that it is running correctly by running:
 
 ```bash
-docker run -d -p 80:80 docker/getting-started
+docker run -p 80:80 docker/getting-started
 ```
 
 If you check the Docker App, you should see a getting started container running. Once you've checked that this works correctly, remove the container via the UI.
@@ -37,6 +43,39 @@ If you check the Docker App, you should see a getting started container running.
     You can also perform these operations directly from the command line, by running <code>docker ps</code> to check the running containers and <code>docker rm -f [CONTAINER-ID]</code> to remove it.
 </details>
 
+### Bash
+Check that you have bash installed in your machine by opening a terminal and running:
+
+```bash
+bash --version
+```
+This should be the case for all Mac and Linux users.
+
+If you are using Windows, you can use the Git Bash terminal that comes with Git. You can download it [here](https://git-scm.com/downloads).
+
+### Make
+Check that you have make installed in your machine by opening a terminal and running:
+
+```bash
+make -v
+```
+This should be the case for all Mac and Linux users.
+
+If you are using Windows, you can then install make using Chocolatey. You can download Chocolatey [here](https://chocolatey.org/install).
+
+Then, restart Git Bash and run:
+
+```bash
+choco install make
+```
+
+Restart Git Bash again and check that make is installed by running:
+
+```bash
+make -v
+```
+
+If you did not manage to install make, you can still follow the course by following the instructions in the next section under the label "Without `make` and `bash` installed on your terminal".
 
 ## Step 2: Prepare the course infrastructure
 
