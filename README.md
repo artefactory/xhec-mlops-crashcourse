@@ -1,4 +1,4 @@
-# DSB MLOPS CRASH COURSE
+# XHEC MLOPS CRASH COURSE
 
 The purpose of this course is to introduce the main concepts of Machine Learning Operations, or MLOps for short, and illustrate their interest and usage through a simple use case.
 
